@@ -11,8 +11,8 @@ import UIKit
 class RecordViewController: UIViewController {
 
     @IBOutlet weak var recordingStatus: UILabel!
-    @IBOutlet weak var startStopButton: UIButton!
-    @IBOutlet weak var microphone: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var startButton: UIButton!
     
     var recording: Bool = false
     
@@ -21,33 +21,28 @@ class RecordViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    override func viewWillAppear(animated: Bool) {
+        stopButton.hidden = true
+        startButton.enabled = true
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     @IBAction func startRecording(sender: AnyObject) {
-        if (!recording)
-        {
-            println("Start recording")
-            recordingStatus.text = "Recording...";
-            startStopButton.imageView?.image = UIImage(named: "stop2x-iphone")
-            startStopButton.hidden = false
-            microphone.enabled = false
-            recording = true
-        }
-        else
-        {
-            recordingStatus.text = "Tap to start recording";
-            startStopButton.hidden = true
-            recording = false
-        }
+        println("Start recording")
+        recordingStatus.text = "Recording...";
+        stopButton.imageView?.image = UIImage(named: "stop2x-iphone")
+        stopButton.hidden = false
+        startButton.enabled = false
+        recording = true
     }
     
     @IBAction func stopRecording(sender: AnyObject) {
         recordingStatus.text = "Tap to start recording";
-        startStopButton.hidden = true
-        microphone.enabled = true
+        stopButton.hidden = true
+        startButton.enabled = true
         recording = false
     }
 }
