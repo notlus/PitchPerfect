@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		373981161AACC98700004B3A /* PlaySoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373981151AACC98700004B3A /* PlaySoundsViewController.swift */; };
 		3739811A1AACD65600004B3A /* sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 373981191AACD65600004B3A /* sound.mp3 */; };
-		3768B7281AABFE6C00764D66 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3768B7271AABFE6C00764D66 /* Info.plist */; };
+		373981671AAD256E00004B3A /* PitchPerfect_1024.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 373981661AAD256E00004B3A /* PitchPerfect_1024.pdf */; };
+		373981691AAD439100004B3A /* RecordedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373981681AAD439100004B3A /* RecordedAudio.swift */; };
 		377E273A1AABEF6900601D65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377E27391AABEF6900601D65 /* AppDelegate.swift */; };
-		377E273C1AABEF6900601D65 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377E273B1AABEF6900601D65 /* RecordViewController.swift */; };
+		377E273C1AABEF6900601D65 /* RecordSoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377E273B1AABEF6900601D65 /* RecordSoundsViewController.swift */; };
 		377E273F1AABEF6900601D65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 377E273D1AABEF6900601D65 /* Main.storyboard */; };
 		377E27411AABEF6900601D65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 377E27401AABEF6900601D65 /* Images.xcassets */; };
 		377E27441AABEF6900601D65 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377E27421AABEF6900601D65 /* LaunchScreen.xib */; };
@@ -31,10 +32,12 @@
 /* Begin PBXFileReference section */
 		373981151AACC98700004B3A /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundsViewController.swift; sourceTree = "<group>"; };
 		373981191AACD65600004B3A /* sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sound.mp3; path = ../sound.mp3; sourceTree = "<group>"; };
+		373981661AAD256E00004B3A /* PitchPerfect_1024.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PitchPerfect_1024.pdf; sourceTree = "<group>"; };
+		373981681AAD439100004B3A /* RecordedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordedAudio.swift; sourceTree = "<group>"; };
 		3768B7271AABFE6C00764D66 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		377E27341AABEF6900601D65 /* Pitch Perfect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pitch Perfect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		377E27391AABEF6900601D65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		377E273B1AABEF6900601D65 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		377E273B1AABEF6900601D65 /* RecordSoundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSoundsViewController.swift; sourceTree = "<group>"; };
 		377E273E1AABEF6900601D65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		377E27401AABEF6900601D65 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		377E27431AABEF6900601D65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -84,11 +87,13 @@
 			children = (
 				373981151AACC98700004B3A /* PlaySoundsViewController.swift */,
 				377E27391AABEF6900601D65 /* AppDelegate.swift */,
-				377E273B1AABEF6900601D65 /* RecordViewController.swift */,
+				377E273B1AABEF6900601D65 /* RecordSoundsViewController.swift */,
 				377E273D1AABEF6900601D65 /* Main.storyboard */,
 				377E27401AABEF6900601D65 /* Images.xcassets */,
+				373981661AAD256E00004B3A /* PitchPerfect_1024.pdf */,
 				377E27421AABEF6900601D65 /* LaunchScreen.xib */,
 				377E27371AABEF6900601D65 /* Supporting Files */,
+				373981681AAD439100004B3A /* RecordedAudio.swift */,
 			);
 			path = "Pitch Perfect";
 			sourceTree = "<group>";
@@ -199,10 +204,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3768B7281AABFE6C00764D66 /* Info.plist in Resources */,
 				377E273F1AABEF6900601D65 /* Main.storyboard in Resources */,
 				3739811A1AACD65600004B3A /* sound.mp3 in Resources */,
 				377E27441AABEF6900601D65 /* LaunchScreen.xib in Resources */,
+				373981671AAD256E00004B3A /* PitchPerfect_1024.pdf in Resources */,
 				377E27411AABEF6900601D65 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,7 +226,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				377E273C1AABEF6900601D65 /* RecordViewController.swift in Sources */,
+				373981691AAD439100004B3A /* RecordedAudio.swift in Sources */,
+				377E273C1AABEF6900601D65 /* RecordSoundsViewController.swift in Sources */,
 				373981161AACC98700004B3A /* PlaySoundsViewController.swift in Sources */,
 				377E273A1AABEF6900601D65 /* AppDelegate.swift in Sources */,
 			);
@@ -350,6 +356,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Pitch Perfect/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -360,6 +367,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Pitch Perfect/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

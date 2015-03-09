@@ -8,7 +8,7 @@
         <!--Record-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController title="Record" id="vXZ-lx-hvc" customClass="RecordViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Record" id="vXZ-lx-hvc" customClass="RecordSoundsViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -17,12 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOV-IC-4yY">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOV-IC-4yY">
                                 <rect key="frame" x="173" y="200" width="255" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="255" id="ANa-ba-qf6"/>
-                                    <constraint firstAttribute="height" constant="200" id="eVU-re-snA"/>
-                                </constraints>
                                 <state key="normal" image="microphone2x-iphone">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -39,7 +35,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-yB-g0M">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-yB-g0M">
                                 <rect key="frame" x="261" y="453" width="79" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="79" id="CqN-Qg-sjy"/>
@@ -50,18 +46,16 @@
                                 </state>
                                 <connections>
                                     <action selector="stopRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="c9f-SJ-zid"/>
-                                    <segue destination="Emj-gz-NlK" kind="show" id="5o3-Zv-hpA"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
                         <constraints>
+                            <constraint firstItem="2el-2m-VRU" firstAttribute="top" secondItem="FOV-IC-4yY" secondAttribute="bottom" constant="7" id="3VL-h2-fpO"/>
                             <constraint firstAttribute="centerX" secondItem="2el-2m-VRU" secondAttribute="centerX" id="3aw-bC-Y8X"/>
-                            <constraint firstItem="8UT-yB-g0M" firstAttribute="top" secondItem="FOV-IC-4yY" secondAttribute="bottom" constant="53" id="9c0-D1-lNe"/>
-                            <constraint firstItem="FOV-IC-4yY" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="136" id="N9w-Tu-KXw"/>
-                            <constraint firstItem="2el-2m-VRU" firstAttribute="top" secondItem="FOV-IC-4yY" secondAttribute="bottom" constant="7" id="Nwj-iX-I9h"/>
-                            <constraint firstItem="8UT-yB-g0M" firstAttribute="centerX" secondItem="FOV-IC-4yY" secondAttribute="centerX" id="SRK-WT-s9z"/>
-                            <constraint firstItem="FOV-IC-4yY" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" constant="0.5" id="r10-V8-kXd"/>
+                            <constraint firstAttribute="centerY" secondItem="FOV-IC-4yY" secondAttribute="centerY" id="HGW-mT-9ds"/>
+                            <constraint firstAttribute="centerX" secondItem="FOV-IC-4yY" secondAttribute="centerX" constant="-0.5" id="cUU-pa-OlX"/>
+                            <constraint firstAttribute="centerY" secondItem="2el-2m-VRU" secondAttribute="centerY" constant="-117.5" id="nfm-VF-a6G"/>
                             <constraint firstItem="8UT-yB-g0M" firstAttribute="centerX" secondItem="2el-2m-VRU" secondAttribute="centerX" id="rT0-PL-rkQ"/>
                         </constraints>
                     </view>
@@ -70,11 +64,12 @@
                         <outlet property="recordingStatus" destination="2el-2m-VRU" id="526-eS-y1n"/>
                         <outlet property="startButton" destination="FOV-IC-4yY" id="eFI-tb-3LE"/>
                         <outlet property="stopButton" destination="8UT-yB-g0M" id="OBa-fJ-B5j"/>
+                        <segue destination="Emj-gz-NlK" kind="show" identifier="playRecordedAudio" id="ZXO-y0-lcl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1137" y="380"/>
+            <point key="canvasLocation" x="1019" y="380"/>
         </scene>
         <!--Play Sounds-->
         <scene sceneID="Xud-ED-smA">
@@ -161,7 +156,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFl-ft-cwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="492" y="380"/>
+            <point key="canvasLocation" x="261" y="380"/>
         </scene>
     </scenes>
     <resources>

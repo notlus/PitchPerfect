@@ -12,21 +12,27 @@ import AVFoundation
 class PlaySoundsViewController: UIViewController {
 
     var audioPlayer = AVAudioPlayer()
+    var receivedAudio: RecordedAudio!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let songPath = NSBundle.mainBundle().pathForResource("sound", ofType: "mp3") {
-            var songURL = NSURL(fileURLWithPath: songPath)
-            println(songURL)
-            
-            var error: NSError?
-            audioPlayer = AVAudioPlayer(contentsOfURL: songURL, error: &error)
-            audioPlayer.enableRate = true
-        }
-        else {
-            println("Failed to get path to file")
-        }
+//        if let songPath = NSBundle.mainBundle().pathForResource("sound", ofType: "mp3") {
+//            var songURL = NSURL(fileURLWithPath: songPath)
+//            println(songURL)
+//            
+//            var error: NSError?
+//            audioPlayer = AVAudioPlayer(contentsOfURL: songURL, error: &error)
+//            audioPlayer.enableRate = true
+//        }
+//        else {
+//            println("Failed to get path to file")
+//        }
+        
+        var error: NSError?
+        audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathURL, error: &error)
+        audioPlayer.enableRate = true
+
     }
 
     override func didReceiveMemoryWarning() {
