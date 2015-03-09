@@ -117,8 +117,62 @@
                                     <action selector="playAudioFast:" destination="Emj-gz-NlK" eventType="touchUpInside" id="AUf-4m-Neo"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1V-ux-K9J">
+                                <rect key="frame" x="46" y="245" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="9PV-bX-jQx"/>
+                                    <constraint firstAttribute="width" constant="100" id="ohf-3T-Ys4"/>
+                                </constraints>
+                                <state key="normal" image="chipmunk2x-iphone">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playChipmunk:" destination="Emj-gz-NlK" eventType="touchUpInside" id="ajL-8a-SOT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rCC-uP-s4J">
+                                <rect key="frame" x="46" y="388" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Olb-IP-lwa"/>
+                                    <constraint firstAttribute="width" constant="100" id="vbE-us-QCw"/>
+                                </constraints>
+                                <state key="normal" image="reverb">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playChipmunk:" destination="Emj-gz-NlK" eventType="touchUpInside" id="ueG-9E-PO2"/>
+                                    <action selector="playReverb:" destination="Emj-gz-NlK" eventType="touchUpInside" id="Y06-hD-ht8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lba-BS-VYC">
+                                <rect key="frame" x="454" y="388" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="E6U-4Q-5Qc"/>
+                                    <constraint firstAttribute="width" constant="100" id="JJK-lh-iv2"/>
+                                </constraints>
+                                <state key="normal" image="echo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playChipmunk:" destination="Emj-gz-NlK" eventType="touchUpInside" id="Tds-5K-w3y"/>
+                                    <action selector="playEcho:" destination="Emj-gz-NlK" eventType="touchUpInside" id="QAX-GD-0GB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQr-MS-wzd">
+                                <rect key="frame" x="454" y="245" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="4No-RT-dUj"/>
+                                    <constraint firstAttribute="height" constant="100" id="kVr-VH-KJD"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="darthvader2x-iphone">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playDarthVader:" destination="Emj-gz-NlK" eventType="touchUpInside" id="arb-WE-HKi"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cel-tS-lDf">
-                                <rect key="frame" x="255.5" y="389" width="100" height="100"/>
+                                <rect key="frame" x="250" y="459" width="100" height="100"/>
                                 <state key="normal" image="stop2x-iphone">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -130,11 +184,19 @@
                         <color key="backgroundColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="KAb-ip-EUK" secondAttribute="trailing" constant="30" id="2pG-2S-p3J"/>
-                            <constraint firstAttribute="centerX" secondItem="Cel-tS-lDf" secondAttribute="centerX" constant="-5.5" id="JPD-4B-ddD"/>
+                            <constraint firstItem="rCC-uP-s4J" firstAttribute="top" secondItem="t1V-ux-K9J" secondAttribute="bottom" constant="43" id="6Fj-sr-y9n"/>
+                            <constraint firstItem="rCC-uP-s4J" firstAttribute="leading" secondItem="iqz-fz-fIw" secondAttribute="leadingMargin" constant="30" id="Fmv-mG-w9i"/>
+                            <constraint firstAttribute="centerX" secondItem="Cel-tS-lDf" secondAttribute="centerX" id="JPD-4B-ddD"/>
                             <constraint firstItem="KAb-ip-EUK" firstAttribute="top" secondItem="H9r-pC-QhE" secondAttribute="bottom" constant="38" id="M3E-q0-vCp"/>
+                            <constraint firstItem="t1V-ux-K9J" firstAttribute="leading" secondItem="iqz-fz-fIw" secondAttribute="leadingMargin" constant="30" id="OgO-Iv-r5f"/>
                             <constraint firstItem="5lc-fY-nQG" firstAttribute="top" secondItem="H9r-pC-QhE" secondAttribute="bottom" constant="38" id="QGO-aA-7NI"/>
+                            <constraint firstItem="lba-BS-VYC" firstAttribute="top" secondItem="RQr-MS-wzd" secondAttribute="bottom" constant="43" id="VHM-Gv-UJh"/>
                             <constraint firstItem="5lc-fY-nQG" firstAttribute="leading" secondItem="iqz-fz-fIw" secondAttribute="leadingMargin" constant="30" id="W5r-x3-gHi"/>
-                            <constraint firstItem="kbO-Tv-gh7" firstAttribute="top" secondItem="Cel-tS-lDf" secondAttribute="bottom" constant="111" id="xzF-uh-TBC"/>
+                            <constraint firstItem="t1V-ux-K9J" firstAttribute="top" secondItem="5lc-fY-nQG" secondAttribute="bottom" constant="43" id="fsv-lz-5Xq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lba-BS-VYC" secondAttribute="trailing" constant="30" id="sWu-Ar-EbY"/>
+                            <constraint firstItem="kbO-Tv-gh7" firstAttribute="top" secondItem="Cel-tS-lDf" secondAttribute="bottom" constant="41" id="xzF-uh-TBC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RQr-MS-wzd" secondAttribute="trailing" constant="30" id="zPT-32-CZP"/>
+                            <constraint firstItem="RQr-MS-wzd" firstAttribute="top" secondItem="KAb-ip-EUK" secondAttribute="bottom" constant="43" id="zR4-gM-6Rm"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -162,8 +224,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chipmunk2x-iphone" width="200" height="200"/>
+        <image name="darthvader2x-iphone" width="200" height="200"/>
+        <image name="echo" width="160" height="160"/>
         <image name="fast2x-iphone" width="200" height="200"/>
         <image name="microphone2x-iphone" width="200" height="200"/>
+        <image name="reverb" width="160" height="160"/>
         <image name="slow2x-iphone" width="200" height="200"/>
         <image name="stop2x-iphone" width="100" height="100"/>
     </resources>

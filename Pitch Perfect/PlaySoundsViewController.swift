@@ -11,7 +11,7 @@ import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
 
-    var audioPlayer = AVAudioPlayer()
+    var audioPlayer: AVAudioPlayer! // = AVAudioPlayer()
     var receivedAudio: RecordedAudio!
     
     override func viewDidLoad() {
@@ -32,7 +32,6 @@ class PlaySoundsViewController: UIViewController {
         var error: NSError?
         audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathURL, error: &error)
         audioPlayer.enableRate = true
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +53,18 @@ class PlaySoundsViewController: UIViewController {
     @IBAction func playSlowly(sender: AnyObject) {
         println("Playing slowly")
         playAudioWithRate(0.5)
+    }
+    
+    @IBAction func playReverb(sender: AnyObject) {
+    }
+    
+    @IBAction func playEcho(sender: AnyObject) {
+    }
+    
+    @IBAction func playChipmunk(sender: AnyObject) {
+    }
+    
+    @IBAction func playDarthVader(sender: AnyObject) {
     }
     
     @IBAction func stopAudio(sender: AnyObject) {
