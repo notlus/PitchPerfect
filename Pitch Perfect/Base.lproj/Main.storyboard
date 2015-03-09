@@ -35,7 +35,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-yB-g0M">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-yB-g0M">
                                 <rect key="frame" x="261" y="453" width="79" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="79" id="CqN-Qg-sjy"/>
@@ -53,10 +53,12 @@
                         <constraints>
                             <constraint firstItem="2el-2m-VRU" firstAttribute="top" secondItem="FOV-IC-4yY" secondAttribute="bottom" constant="7" id="3VL-h2-fpO"/>
                             <constraint firstAttribute="centerX" secondItem="2el-2m-VRU" secondAttribute="centerX" id="3aw-bC-Y8X"/>
+                            <constraint firstItem="8UT-yB-g0M" firstAttribute="top" secondItem="2el-2m-VRU" secondAttribute="bottom" constant="25" id="Grh-SX-nP2"/>
                             <constraint firstAttribute="centerY" secondItem="FOV-IC-4yY" secondAttribute="centerY" id="HGW-mT-9ds"/>
+                            <constraint firstAttribute="centerY" secondItem="8UT-yB-g0M" secondAttribute="centerY" constant="-189" id="HYw-cq-4s5"/>
+                            <constraint firstItem="8UT-yB-g0M" firstAttribute="centerX" secondItem="2el-2m-VRU" secondAttribute="centerX" id="bdU-ov-4rr"/>
                             <constraint firstAttribute="centerX" secondItem="FOV-IC-4yY" secondAttribute="centerX" constant="-0.5" id="cUU-pa-OlX"/>
                             <constraint firstAttribute="centerY" secondItem="2el-2m-VRU" secondAttribute="centerY" constant="-117.5" id="nfm-VF-a6G"/>
-                            <constraint firstItem="8UT-yB-g0M" firstAttribute="centerX" secondItem="2el-2m-VRU" secondAttribute="centerX" id="rT0-PL-rkQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="874-Jk-sPE"/>

@@ -17,7 +17,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var startButton: UIButton!
     
     var audioRecorder: AVAudioRecorder!
-//    var recording: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +51,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         stopButton.imageView?.image = UIImage(named: "stop2x-iphone")
         stopButton.hidden = false
         startButton.enabled = false
-//        recording = true
         if let audioFile = getAudioFilePath() {
             // Start recording
             println(audioFile)
@@ -73,7 +71,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.stop()
         let session = AVAudioSession.sharedInstance()
         session.setActive(false, error: nil)
-//        recording = false
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
