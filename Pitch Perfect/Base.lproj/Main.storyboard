@@ -140,8 +140,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="playChipmunk:" destination="Emj-gz-NlK" eventType="touchUpInside" id="ueG-9E-PO2"/>
-                                    <action selector="playReverb:" destination="Emj-gz-NlK" eventType="touchUpInside" id="Y06-hD-ht8"/>
+                                    <action selector="playReverb:" destination="Emj-gz-NlK" eventType="touchUpInside" id="9HJ-o4-TeM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lba-BS-VYC">
@@ -154,7 +153,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="playChipmunk:" destination="Emj-gz-NlK" eventType="touchUpInside" id="Tds-5K-w3y"/>
                                     <action selector="playEcho:" destination="Emj-gz-NlK" eventType="touchUpInside" id="QAX-GD-0GB"/>
                                 </connections>
                             </button>

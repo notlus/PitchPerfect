@@ -75,9 +75,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         if (flag) {
-            let recordedAudio = RecordedAudio()
-            recordedAudio.title = recorder.url.lastPathComponent
-            recordedAudio.filePathURL = recorder.url
+            let recordedAudio = RecordedAudio(filePath: recorder.url, title: recorder.url.lastPathComponent!)
             
             // Recorded successfully
             performSegueWithIdentifier("playRecordedAudio", sender: recordedAudio)

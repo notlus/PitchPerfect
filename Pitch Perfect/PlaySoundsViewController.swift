@@ -13,6 +13,7 @@ class PlaySoundsViewController: UIViewController {
 
     var audioPlayer: AVAudioPlayer!
     var receivedAudio: RecordedAudio!
+    var audioFile: AVAudioFile!
     
     // Create audio engine
     var audioEngine: AVAudioEngine!
@@ -20,22 +21,15 @@ class PlaySoundsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        if let songPath = NSBundle.mainBundle().pathForResource("sound", ofType: "mp3") {
-//            var songURL = NSURL(fileURLWithPath: songPath)
-//            println(songURL)
-//            
-//            var error: NSError?
-//            audioPlayer = AVAudioPlayer(contentsOfURL: songURL, error: &error)
-//            audioPlayer.enableRate = true
-//        }
-//        else {
-//            println("Failed to get path to file")
-//        }
-        
+        // Create the AVAudioPlayer instance needed for fast/slow playback
         var error: NSError?
         audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathURL, error: &error)
         audioPlayer.enableRate = true
         
+        // Create the AVAudioFile instance needed for some playback
+        audioFile = AVAudioFile(forReading: receivedAudio.filePathURL, error: nil)
+        
+        // Create the AVAudioEngine instance needed for playing various effects
         audioEngine = AVAudioEngine()
     }
 
@@ -45,16 +39,14 @@ class PlaySoundsViewController: UIViewController {
     }
     
     func playAudioWithRate(rate: Float) {
-        audioPlayer.stop()
+        stopAllAudio()
         audioPlayer.rate = rate
         audioPlayer.play()
     }
     
     func playAudioWithVariablePitch(pitch: Float) {
         // Stop any currently playing audio
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        stopAllAudio()
 
         // Attach a player node
         var audioPlayerNode = AVAudioPlayerNode()
@@ -65,12 +57,6 @@ class PlaySoundsViewController: UIViewController {
         audioTimePitch.pitch = pitch
         audioEngine.attachNode(audioTimePitch)
         
-        // Get the mixer
-//        let mixer = audioEngine.mainMixerNode
-        
-        // Create an AVAudioFile instance
-        let audioFile = AVAudioFile(forReading: receivedAudio.filePathURL, error: nil)
-        
         // Connect the player to the pitch node
         audioEngine.connect(audioPlayerNode, to: audioTimePitch, format: nil)
         
@@ -79,9 +65,59 @@ class PlaySoundsViewController: UIViewController {
         
         // Play
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-        var error: NSError?
-        audioEngine.startAndReturnError(&error)
+        audioEngine.startAndReturnError(nil)
         audioPlayerNode.play()
+    }
+    
+    func playAudioWithReverb(preset: AVAudioUnitReverbPreset, mix: Float) {
+        // Stop any currently playing audio
+        stopAllAudio()
+        
+        // Create the unit and set the effect
+        let reverbNode = AVAudioUnitReverb()
+        reverbNode.loadFactoryPreset(preset)
+        reverbNode.wetDryMix = mix
+
+        // Attach the effect to the engine
+        audioEngine.attachNode(reverbNode)
+        
+        // Attach a player node to the engine
+        var audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+        
+        audioEngine.connect(audioPlayerNode, to: reverbNode, format: nil)
+        audioEngine.connect(reverbNode, to: audioEngine.outputNode, format: nil)
+        
+        // Play
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        audioEngine.startAndReturnError(nil)
+        audioPlayerNode.play()
+    }
+    
+    func playAudioWithDelay(delay: Float) {
+        stopAllAudio()
+        
+        let echoNode = AVAudioUnitDelay()
+        audioEngine.attachNode(echoNode)
+        echoNode.delayTime = 0.5
+        
+        // Attach a player node to the engine
+        var audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+        
+        audioEngine.connect(audioPlayerNode, to: echoNode, format: nil)
+        audioEngine.connect(echoNode, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        audioEngine.startAndReturnError(nil)
+        audioPlayerNode.play()
+    }
+    
+    func stopAllAudio() {
+        audioEngine.stop()
+        audioEngine.reset()
+        audioPlayer.stop()
+        audioPlayer.currentTime = 0
     }
     
     @IBAction func playAudioFast(sender: AnyObject) {
@@ -103,9 +139,11 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playEcho(sender: AnyObject) {
+        playAudioWithDelay(0.25)
     }
 
     @IBAction func playReverb(sender: AnyObject) {
+        playAudioWithReverb(AVAudioUnitReverbPreset.Cathedral, mix: 75.0)
     }
 
     @IBAction func stopAudio(sender: AnyObject) {

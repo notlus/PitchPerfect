@@ -83,6 +83,7 @@
 		377E27361AABEF6900601D65 /* Pitch Perfect */ = {
 			isa = PBXGroup;
 			children = (
+				373981681AAD439100004B3A /* RecordedAudio.swift */,
 				373981151AACC98700004B3A /* PlaySoundsViewController.swift */,
 				377E27391AABEF6900601D65 /* AppDelegate.swift */,
 				377E273B1AABEF6900601D65 /* RecordSoundsViewController.swift */,
@@ -90,7 +91,6 @@
 				377E27401AABEF6900601D65 /* Images.xcassets */,
 				377E27421AABEF6900601D65 /* LaunchScreen.xib */,
 				377E27371AABEF6900601D65 /* Supporting Files */,
-				373981681AAD439100004B3A /* RecordedAudio.swift */,
 			);
 			path = "Pitch Perfect";
 			sourceTree = "<group>";
