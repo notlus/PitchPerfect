@@ -13,7 +13,6 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
 
     // Outlets
     @IBOutlet weak var stopButton: UIButton!
-    @IBOutlet weak var pausePlayButton: UIButton!
     
     // Properties
     var audioPlayer: AVAudioPlayer!
@@ -44,9 +43,8 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         // Create the AVAudioEngine instance needed for playing various effects
         audioEngine = AVAudioEngine()
         
-        // Disable the play/pause and stop buttons by default
-        pausePlayButton.enabled = false;
-        self.stopButton.enabled = false
+        // Disable the stop buttons by default
+        stopButton.enabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,8 +59,6 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         audioPlayer.rate = rate
         audioPlayer.play()
 
-        // Play
-        pausePlayButton.enabled = true
         stopButton.enabled = true
     }
     
@@ -86,10 +82,8 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         audioEngine.connect(audioTimePitch, to: audioEngine.outputNode, format: nil)
         
         // Play
-        pausePlayButton.enabled = true
         stopButton.enabled = true
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: { () -> Void in
-            self.pausePlayButton.enabled = false
             self.stopButton.enabled = false
         })
         
@@ -117,10 +111,8 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         audioEngine.connect(reverbNode, to: audioEngine.outputNode, format: nil)
         
         // Play
-        pausePlayButton.enabled = true
         stopButton.enabled = true
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: { () -> Void in
-            self.pausePlayButton.enabled = false
             self.stopButton.enabled = false
         })
         
@@ -143,10 +135,8 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         audioEngine.connect(audioPlayerNode, to: echoNode, format: nil)
         audioEngine.connect(echoNode, to: audioEngine.outputNode, format: nil)
         
-        pausePlayButton.enabled = true
         stopButton.enabled = true
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: { () -> Void in
-            self.pausePlayButton.enabled = false
             self.stopButton.enabled = false
         })
         
@@ -164,13 +154,11 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
             audioPlayer.currentTime = 0
         }
         
-        pausePlayButton.enabled = false
         stopButton.enabled = false
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
-        // Finished playing, so disable the stop and pause buttons
-        pausePlayButton.enabled = false
+        // Finished playing, so disable the stop button
         stopButton.enabled = false
     }
 
@@ -179,7 +167,6 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
     @IBAction func playAudioFast(sender: AnyObject) {
         println("Playing fast")
         playAudioWithRate(2.0)
-        pausePlayButton.enabled = true
     }
     
     @IBAction func playSlowly(sender: AnyObject) {
@@ -211,41 +198,6 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
             audioPlayer.stop()
         }
         
-        pausePlayButton.enabled = false
         stopButton.enabled = false
-
-        pausePlayButton.setImage(UIImage(named: "pause2x-iphone"), forState: UIControlState.Normal)
-    }
-    
-    @IBAction func toggleAudio(sender: AnyObject) {
-        var pause = false
-        
-        if playbackMode == PlaybackMode.AudioEngine {
-            if audioEngine.running {
-                audioEngine.pause()
-                pause = true
-            }
-            else {
-                audioEngine.startAndReturnError(nil)
-                pause = false
-            }
-        }
-        else if playbackMode == PlaybackMode.AudioPlayer {
-            if audioPlayer.playing {
-                audioPlayer.pause()
-                pause = true
-            }
-            else {
-                audioPlayer.play()
-                pause = false
-            }
-        }
-        
-        if pause == true {
-            pausePlayButton.setImage(UIImage(named: "stop2x-iphone"), forState: UIControlState.Normal)
-        }
-        else {
-            pausePlayButton.setImage(UIImage(named: "pause2x-iphone"), forState: UIControlState.Normal)
-        }
     }
 }
