@@ -15,8 +15,11 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var recordingStatus: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
     
+    // Properties
     var audioRecorder: AVAudioRecorder!
+    var paused: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     override func viewWillAppear(animated: Bool) {
         stopButton.hidden = true
         startButton.enabled = true
+        pauseButton.hidden = true
+        paused = false
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,17 +54,26 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         recordingStatus.text = "Recording";
         stopButton.imageView?.image = UIImage(named: "stop2x-iphone")
         stopButton.hidden = false
+        pauseButton.hidden = false
         startButton.enabled = false
-        if let audioFile = getAudioFilePath() {
-            // Start recording
-            println(audioFile)
-            let session = AVAudioSession.sharedInstance()
-            session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
-            audioRecorder = AVAudioRecorder(URL: audioFile, settings: nil, error: nil)
-            audioRecorder.delegate = self
-            audioRecorder.meteringEnabled = true
-            audioRecorder.prepareToRecord()
+        
+        if !paused {
+            if let audioFile = getAudioFilePath() {
+                // Start recording
+                println(audioFile)
+                let session = AVAudioSession.sharedInstance()
+                session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
+                audioRecorder = AVAudioRecorder(URL: audioFile, settings: nil, error: nil)
+                audioRecorder.delegate = self
+                audioRecorder.meteringEnabled = true
+                audioRecorder.prepareToRecord()
+                audioRecorder.record()
+            }
+        }
+        else {
+            // Recording has been paused, start it again
             audioRecorder.record()
+            paused = false
         }
     }
     
@@ -68,8 +82,16 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         stopButton.hidden = true
         startButton.enabled = true
         audioRecorder.stop()
+        paused = false
         let session = AVAudioSession.sharedInstance()
         session.setActive(false, error: nil)
+    }
+    
+    @IBAction func pauseRecording(sender: AnyObject) {
+        audioRecorder.pause()
+        recordingStatus.text = "Tap to resume recording"
+        startButton.enabled = true
+        paused = true
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
@@ -84,6 +106,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             stopButton.hidden = true
             startButton.enabled = true
         }
+        paused = false
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

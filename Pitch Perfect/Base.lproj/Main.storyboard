@@ -17,8 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOV-IC-4yY">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOV-IC-4yY">
                                 <rect key="frame" x="173" y="200" width="255" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="255" id="5hS-uJ-kfV"/>
+                                </constraints>
                                 <state key="normal" image="microphone2x-iphone">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -26,20 +29,11 @@
                                     <action selector="startRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3ve-bX-xti"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to start recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2el-2m-VRU">
-                                <rect key="frame" x="218" y="407" width="164" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-yB-g0M">
+                                <rect key="frame" x="188" y="454" width="100" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="164" id="vpv-WB-3pA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-yB-g0M">
-                                <rect key="frame" x="261" y="453" width="79" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="79" id="CqN-Qg-sjy"/>
-                                    <constraint firstAttribute="height" constant="72" id="Zro-4d-fyo"/>
+                                    <constraint firstAttribute="width" constant="100" id="CqN-Qg-sjy"/>
+                                    <constraint firstAttribute="height" constant="100" id="Zro-4d-fyo"/>
                                 </constraints>
                                 <state key="normal" image="stop2x-iphone">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,21 +42,52 @@
                                     <action selector="stopRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="c9f-SJ-zid"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ss-yH-VHl">
+                                <rect key="frame" x="312" y="454" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="ETQ-9U-qgW"/>
+                                    <constraint firstAttribute="height" constant="100" id="JZG-NH-uc4"/>
+                                    <constraint firstAttribute="width" constant="100" id="Tld-ld-eQr"/>
+                                </constraints>
+                                <state key="normal" image="pause2x-iphone">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ETQ-9U-qgW"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="pauseRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ESV-ld-NxS"/>
+                                    <action selector="toggleAudio:" destination="Emj-gz-NlK" eventType="touchUpInside" id="1KZ-eP-84i"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to start recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2el-2m-VRU">
+                                <rect key="frame" x="196" y="402" width="209" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="209" id="vpv-WB-3pA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
                         <constraints>
-                            <constraint firstItem="2el-2m-VRU" firstAttribute="top" secondItem="FOV-IC-4yY" secondAttribute="bottom" constant="7" id="3VL-h2-fpO"/>
                             <constraint firstAttribute="centerX" secondItem="2el-2m-VRU" secondAttribute="centerX" id="3aw-bC-Y8X"/>
-                            <constraint firstItem="8UT-yB-g0M" firstAttribute="top" secondItem="2el-2m-VRU" secondAttribute="bottom" constant="25" id="Grh-SX-nP2"/>
-                            <constraint firstAttribute="centerY" secondItem="FOV-IC-4yY" secondAttribute="centerY" id="HGW-mT-9ds"/>
-                            <constraint firstAttribute="centerY" secondItem="8UT-yB-g0M" secondAttribute="centerY" constant="-189" id="HYw-cq-4s5"/>
-                            <constraint firstItem="8UT-yB-g0M" firstAttribute="centerX" secondItem="2el-2m-VRU" secondAttribute="centerX" id="bdU-ov-4rr"/>
-                            <constraint firstAttribute="centerX" secondItem="FOV-IC-4yY" secondAttribute="centerX" constant="-0.5" id="cUU-pa-OlX"/>
-                            <constraint firstAttribute="centerY" secondItem="2el-2m-VRU" secondAttribute="centerY" constant="-117.5" id="nfm-VF-a6G"/>
+                            <constraint firstItem="7Ss-yH-VHl" firstAttribute="top" secondItem="2el-2m-VRU" secondAttribute="bottom" constant="31.5" id="7DZ-VN-alM"/>
+                            <constraint firstItem="FOV-IC-4yY" firstAttribute="centerX" secondItem="2el-2m-VRU" secondAttribute="centerX" id="A8Z-yn-at0"/>
+                            <constraint firstItem="8UT-yB-g0M" firstAttribute="top" secondItem="2el-2m-VRU" secondAttribute="bottom" constant="31.5" id="Grh-SX-nP2"/>
+                            <constraint firstAttribute="centerY" secondItem="8UT-yB-g0M" secondAttribute="centerY" constant="-204" id="HYw-cq-4s5"/>
+                            <constraint firstItem="7Ss-yH-VHl" firstAttribute="leading" secondItem="8UT-yB-g0M" secondAttribute="trailing" constant="24" id="RIg-eR-6kb"/>
+                            <constraint firstItem="8UT-yB-g0M" firstAttribute="centerX" secondItem="2el-2m-VRU" secondAttribute="centerX" constant="-62" id="bdU-ov-4rr"/>
+                            <constraint firstAttribute="centerY" secondItem="2el-2m-VRU" secondAttribute="centerY" constant="-112.25" id="nfm-VF-a6G"/>
+                            <constraint firstItem="FOV-IC-4yY" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="srG-Ae-XK4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="874-Jk-sPE"/>
                     <connections>
+                        <outlet property="pauseButton" destination="7Ss-yH-VHl" id="TaR-5N-unr"/>
                         <outlet property="recordingStatus" destination="2el-2m-VRU" id="526-eS-y1n"/>
                         <outlet property="startButton" destination="FOV-IC-4yY" id="eFI-tb-3LE"/>
                         <outlet property="stopButton" destination="8UT-yB-g0M" id="OBa-fJ-B5j"/>
@@ -71,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1019" y="380"/>
+            <point key="canvasLocation" x="1019" y="380.5"/>
         </scene>
         <!--Play Sounds-->
         <scene sceneID="Xud-ED-smA">
