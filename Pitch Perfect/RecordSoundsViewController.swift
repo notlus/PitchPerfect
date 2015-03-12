@@ -11,13 +11,13 @@ import AVFoundation
 
 class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
-    // Outlets
+    // MARK: - Outlets
     @IBOutlet weak var recordingStatus: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
     
-    // Properties
+    // MARK: - Properties
     var audioRecorder: AVAudioRecorder!
     var paused: Bool!
     
@@ -50,11 +50,14 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         return fileURL
     }
 
+    // MARK: - Interface Builder Actions
+
     @IBAction func startRecording(sender: AnyObject) {
         recordingStatus.text = "Recording";
         stopButton.imageView?.image = UIImage(named: "stop2x-iphone")
         stopButton.hidden = false
         pauseButton.hidden = false
+        pauseButton.enabled = true
         startButton.enabled = false
         
         if !paused {
@@ -78,7 +81,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     @IBAction func stopRecording(sender: AnyObject) {
-        recordingStatus.text = "Tap to start recording";
+        recordingStatus.text = "Tap to Record";
         stopButton.hidden = true
         startButton.enabled = true
         audioRecorder.stop()
@@ -91,14 +94,20 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.pause()
         recordingStatus.text = "Tap to resume recording"
         startButton.enabled = true
+        pauseButton.enabled = false
         paused = true
     }
     
+    // MARK: - AVAudioRecorderDelegate
+
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         if (flag) {
+            // Recorded successfully
+
+            // Construct a new RecordedAudio object
             let recordedAudio = RecordedAudio(filePath: recorder.url, title: recorder.url.lastPathComponent!)
             
-            // Recorded successfully
+            // Send the object in the segue
             performSegueWithIdentifier("playRecordedAudio", sender: recordedAudio)
         }
         else {
@@ -106,6 +115,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             stopButton.hidden = true
             startButton.enabled = true
         }
+        
         paused = false
     }
     

@@ -62,7 +62,7 @@
                                     <action selector="toggleAudio:" destination="Emj-gz-NlK" eventType="touchUpInside" id="1KZ-eP-84i"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to start recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2el-2m-VRU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2el-2m-VRU">
                                 <rect key="frame" x="196" y="402" width="209" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="209" id="vpv-WB-3pA"/>
