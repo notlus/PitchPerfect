@@ -43,11 +43,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         let fileURL = NSURL.fileURLWithPathComponents(pathComponents)
         
         return fileURL
-       
     }
 
     @IBAction func startRecording(sender: AnyObject) {
-        recordingStatus.text = "Recording...";
+        recordingStatus.text = "Recording";
         stopButton.imageView?.image = UIImage(named: "stop2x-iphone")
         stopButton.hidden = false
         startButton.enabled = false
